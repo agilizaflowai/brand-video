@@ -1,0 +1,218 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-ink:    #0E0E10;
+    --color-paper:  #F4EFE6;
+    --color-accent: #5A1F25;
+
+    /* Altura padrão da navbar — usada em scroll-margin-top */
+    --navbar-h: 4.5rem; /* 72 px */
+  }
+
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--navbar-h);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: 'ss01' 1, 'cv11' 1;
+  }
+
+  body {
+    @apply bg-paper text-ink font-sans;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-paper);
+  }
+
+  /* Headings padrão — usadas fora do prose-magno */
+  h1, h2, h3, h4, h5, h6 {
+    text-wrap: balance;
+  }
+
+  /* Focus ring consistente em toda interação */
+  :focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--color-paper), 0 0 0 3.5px var(--color-ink);
+  }
+
+  /* Scroll target offset (usado em ids âncora) */
+  [id] {
+    scroll-margin-top: calc(var(--navbar-h) + 1.5rem);
+  }
+
+  /* Variação tipográfica nativa — usa a variável Fraunces */
+  .font-serif {
+    font-variation-settings: 'opsz' 64, 'SOFT' 0;
+  }
+}
+
+@layer components {
+  /* ==========================================================
+     Prose editorial ("The Economist escrevendo ao cliente")
+     ========================================================== */
+  .prose-magno {
+    @apply max-w-prose;
+  }
+
+  .prose-magno p {
+    @apply font-sans text-[1.0625rem] leading-[1.7] text-ink-65 mb-6;
+    max-width: 65ch;
+  }
+
+  .prose-magno p.lead {
+    @apply text-[1.25rem] leading-[1.55] text-ink;
+  }
+
+  .prose-magno h2 {
+    @apply font-serif text-[2.75rem] font-medium leading-[1.08] text-ink mt-16 mb-5 tracking-tight;
+    font-variation-settings: 'opsz' 72, 'SOFT' 0;
+  }
+
+  .prose-magno h3 {
+    @apply font-serif text-[1.625rem] font-medium leading-[1.22] text-ink mt-10 mb-3;
+    font-variation-settings: 'opsz' 36, 'SOFT' 0;
+  }
+
+  .prose-magno strong {
+    @apply text-ink font-medium;
+  }
+
+  .prose-magno em {
+    font-style: italic;
+  }
+
+  .prose-magno blockquote {
+    @apply font-serif text-[1.5rem] leading-[1.35] italic my-8 pl-6 border-l-2 border-accent max-w-[55ch] text-ink;
+    font-variation-settings: 'opsz' 36;
+  }
+
+  .prose-magno ul,
+  .prose-magno ol {
+    @apply my-6 pl-6;
+  }
+
+  .prose-magno li {
+    @apply font-sans text-[1.0625rem] leading-[1.65] text-ink-65 mb-2;
+    max-width: 65ch;
+  }
+
+  .prose-magno .numeric,
+  .prose-magno code {
+    font-family: var(--font-plex-mono), 'IBM Plex Mono', monospace;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .prose-magno hr {
+    @apply my-16 border-0 border-t border-neutral-10;
+  }
+
+  /* ==========================================================
+     Link editorial — underline animado
+     ========================================================== */
+  .link-editorial {
+    @apply relative inline-flex items-center gap-1.5 text-ink transition-colors;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 100% 1px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    padding-bottom: 2px;
+  }
+
+  .link-editorial--muted {
+    @apply text-ink-65;
+    background-image: linear-gradient(theme('colors.neutral.20'), theme('colors.neutral.20'));
+  }
+
+  .link-editorial--inverse {
+    @apply text-paper/80;
+    background-image: linear-gradient(rgba(244, 239, 230, 0.3), rgba(244, 239, 230, 0.3));
+  }
+
+  .link-editorial:hover {
+    @apply text-accent;
+    background-image: linear-gradient(theme('colors.accent.DEFAULT'), theme('colors.accent.DEFAULT'));
+  }
+
+  .link-editorial--inverse:hover {
+    @apply text-paper;
+    background-image: linear-gradient(theme('colors.paper.DEFAULT'), theme('colors.paper.DEFAULT'));
+  }
+
+  /* ==========================================================
+     Nav link — underline reveal do zero ao hover
+     ========================================================== */
+  .nav-link {
+    @apply relative text-ink-65 transition-colors;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute left-0 right-0 -bottom-1 h-px bg-ink scale-x-0 origin-left transition-transform duration-300 ease-out;
+  }
+
+  .nav-link:hover,
+  .nav-link[aria-current='page'] {
+    @apply text-ink;
+  }
+
+  .nav-link:hover::after,
+  .nav-link[aria-current='page']::after {
+    @apply scale-x-100;
+  }
+
+  /* ==========================================================
+     Ornamento de divisor com ponto central
+     ========================================================== */
+  .divider-ornament {
+    @apply relative flex items-center justify-center my-10;
+  }
+
+  .divider-ornament::before,
+  .divider-ornament::after {
+    content: '';
+    @apply flex-1 h-px bg-neutral-20;
+  }
+
+  .divider-ornament > span {
+    @apply mx-5 text-neutral-50 text-[0.625rem] font-sans font-medium uppercase tracking-[0.25em];
+  }
+}
+
+@layer utilities {
+  .container-tight { @apply mx-auto max-w-tight px-4 sm:px-6 lg:px-8; }
+  .container-prose { @apply mx-auto max-w-prose px-4 sm:px-6 lg:px-8; }
+  .container-wide  { @apply mx-auto max-w-wide  px-4 sm:px-6 lg:px-8 xl:px-12; }
+  .container-page  { @apply mx-auto max-w-page  px-4 sm:px-6 lg:px-8 xl:px-16; }
+
+  .eyebrow {
+    @apply font-sans text-[0.75rem] font-medium uppercase tracking-[0.14em] text-neutral-50;
+  }
+
+  .eyebrow-wide {
+    @apply font-sans text-[0.6875rem] font-medium uppercase tracking-[0.22em] text-neutral-50;
+  }
+
+  .hairline-t { @apply border-t border-neutral-10; }
+  .hairline-b { @apply border-b border-neutral-10; }
+  .hairline-y { @apply border-y border-neutral-10; }
+
+  .text-balance { text-wrap: balance; }
+  .text-pretty { text-wrap: pretty; }
+
+  /* Elevação variável Fraunces por escala */
+  .type-display-opsz-xl   { font-variation-settings: 'opsz' 144, 'SOFT' 0; }
+  .type-display-opsz-lg   { font-variation-settings: 'opsz' 96,  'SOFT' 0; }
+  .type-display-opsz-md   { font-variation-settings: 'opsz' 72,  'SOFT' 0; }
+  .type-display-opsz-sm   { font-variation-settings: 'opsz' 48,  'SOFT' 0; }
+  .type-display-opsz-body { font-variation-settings: 'opsz' 24,  'SOFT' 0; }
+}

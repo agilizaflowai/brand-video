@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>MAGNO — Proposta institucional</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+  <style>
+    :root {
+      --ink:        #0E0E10;
+      --ink-65:     #4A4A4E;
+      --paper:      #F4EFE6;
+      --paper-50:   #EEE9DD;
+      --paper-deep: #E8E2D5;
+      --accent:     #5A1F25;
+      --neutral-50: #6B6A67;
+      --neutral-20: #B8B3A9;
+      --neutral-10: #D8D3C8;
+
+      --font-serif: 'Fraunces', 'Tiempos Headline', Georgia, serif;
+      --font-sans:  'Inter', -apple-system, sans-serif;
+      --font-mono:  'IBM Plex Mono', 'JetBrains Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { background: #2e2e30; }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--ink);
+      padding: 40px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+
+    /* A4 em 96dpi = 794 × 1123 px. Usamos A4 @ 150% para crispness: 1191 × 1684. */
+    .page {
+      width: 794px;
+      min-height: 1123px;
+      padding: 72px 72px 56px;
+      background: var(--paper);
+      position: relative;
+      box-shadow: 0 8px 32px rgba(0,0,0,.35);
+      display: flex;
+      flex-direction: column;
+      page-break-after: always;
+    }
+
+    .page--dark {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .page--accent {
+      background: var(--accent);
+      color: var(--paper);
+    }
+
+    /* ============== HEADER/FOOTER DE PÁGINA ============== */
+
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 16px;
+      border-bottom: 0.5px solid var(--neutral-20);
+      font-family: var(--font-sans);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--neutral-50);
+    }
+    .page--dark .page-header {
+      border-color: rgba(244,239,230,.25);
+      color: rgba(244,239,230,.55);
+    }
+    .page--accent .page-header {
+      border-color: rgba(244,239,230,.35);
+      color: rgba(244,239,230,.75);
+    }
+
+    .page-footer {
+      margin-top: auto;
+      display: flex;
+      justify-content: space-between;
+      padding-top: 20px;
+      border-top: 0.5px solid var(--neutral-20);
+      font-family: var(--font-sans);
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--neutral-50);
+    }
+    .page--dark .page-footer {
+      border-color: rgba(244,239,230,.25);
+      color: rgba(244,239,230,.55);
+    }
+    .page--accent .page-footer {
+      border-color: rgba(244,239,230,.35);
+      color: rgba(244,239,230,.75);
+    }
+
+    /* ============== TIPOGRAFIA ============== */
+
+    .display {
+      font-family: var(--font-serif);
+      font-weight: 500;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+    }
+
+    h1.display-hero { font-size: 64px; }
+    h2.display-l    { font-size: 48px; line-height: 1.10; margin-bottom: 32px; }
+    h3.display-m    { font-size: 32px; line-height: 1.15; margin-bottom: 20px; }
+    h4.display-s    { font-size: 24px; line-height: 1.2; margin-bottom: 14px; }
+
+    .eyebrow {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--neutral-50);
+      font-weight: 500;
+    }
+    .page--dark .eyebrow { color: rgba(244,239,230,.65); }
+    .page--accent .eyebrow { color: rgba(244,239,230,.8); }
+
+    p {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      line-height: 1.65;
+      color: var(--ink-65);
+      margin-bottom: 14px;
+      max-width: 62ch;
+    }
+    .page--dark p { color: rgba(244,239,230,.78); }
+    .page--accent p { color: rgba(244,239,230,.9); }
+
+    .lead {
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.55;
+      color: var(--ink);
+      margin-bottom: 24px;
+      max-width: 58ch;
+    }
+    .page--dark .lead { color: var(--paper); }
+
+    ul, ol { padding-left: 18px; margin-bottom: 14px; }
+    li {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      line-height: 1.65;
+      color: var(--ink-65);
+      margin-bottom: 6px;
+    }
+    .page--dark li { color: rgba(244,239,230,.78); }
+
+    .num {
+      font-family: var(--font-mono);
+      font-variant-numeric: tabular-nums;
+      font-weight: 500;
+    }
+
+    .divider {
+      height: 0.5px;
+      background: var(--neutral-20);
+      margin: 24px 0;
+    }
+    .page--dark .divider { background: rgba(244,239,230,.25); }
+
+    /* ============== TABELAS / GRIDS ============== */
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-family: var(--font-sans);
+      font-size: 12px;
+    }
+    th {
+      text-align: left;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 10px;
+      color: var(--neutral-50);
+      border-bottom: 1px solid var(--neutral-20);
+      padding: 10px 8px;
+    }
+    td {
+      padding: 12px 8px;
+      border-bottom: 0.5px solid var(--neutral-10);
+      vertical-align: top;
+      color: var(--ink-65);
+    }
+    td.num { font-family: var(--font-mono); font-weight: 500; color: var(--ink); text-align: right; font-variant-numeric: tabular-nums; }
+
+    /* ============== MONOGRAMA/LOGO ============== */
+
+    .mono-svg { color: currentColor; }
+
+    .brand-sign {
+      font-family: var(--font-serif);
+      font-weight: 500;
+      letter-spacing: 0.12em;
+    }
+
+    /* ============== METRIC CARDS ============== */
+
+    .metric {
+      border: 0.5px solid var(--neutral-20);
+      padding: 20px 20px;
+      background: var(--paper-50);
+    }
+    .page--dark .metric { background: rgba(244,239,230,.05); border-color: rgba(244,239,230,.25); }
+
+    .metric .label {
+      font-family: var(--font-sans);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--neutral-50);
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+    .metric .value {
+      font-family: var(--font-mono);
+      font-weight: 500;
+      font-size: 22px;
+      color: var(--ink);
+      font-variant-numeric: tabular-nums;
+    }
+    .page--dark .metric .value { color: var(--paper); }
+
+    /* ============== PULL QUOTE ============== */
+
+    .pullquote {
+      border-left: 1.5px solid var(--accent);
+      padding: 4px 24px;
+      margin: 24px 0;
+    }
+    .pullquote p {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 20px;
+      line-height: 1.35;
+      color: var(--ink);
+      max-width: 56ch;
+    }
+    .page--dark .pullquote p { color: var(--paper); }
+
+    /* ============== PRINT ============== */
+
+    @media print {
+      html { background: #fff; }
+      body { padding: 0; gap: 0; }
+      .page { box-shadow: none; margin: 0; width: 210mm; min-height: 297mm; padding: 22mm 20mm 18mm; }
+    }
+
+    @page {
+      size: A4;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===================================================================
+  PÁGINA 1 — CAPA
+  =================================================================== -->
+<div class="page page--dark">
+  <div style="display: flex; justify-content: space-between; align-items: center; flex-shrink: 0;">
+    <svg class="mono-svg" width="52" height="52" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="1.4"/>
+      <g fill="currentColor">
+        <rect x="22.5" y="26" width="7.5" height="48"/>
+        <rect x="19" y="26" width="14.5" height="1.6"/>
+        <rect x="19" y="72.4" width="14.5" height="1.6"/>
+        <rect x="70" y="26" width="7.5" height="48"/>
+        <rect x="66.5" y="26" width="14.5" height="1.6"/>
+        <rect x="66.5" y="72.4" width="14.5" height="1.6"/>
+        <polygon points="30,26 33.2,26 51.6,61 48.4,61"/>
+        <polygon points="66.8,26 70,26 51.6,61 48.4,61"/>
+      </g>
+    </svg>
+    <span class="eyebrow">Proposta institucional · {{DATA_PROPOSTA}}</span>
+  </div>
+
+  <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 28px;">
+    <span class="brand-sign" style="font-size: 48px;">MAGNO</span>
+    <span class="eyebrow" style="font-size: 13px;">Gestão Patrimonial</span>
+
+    <h1 class="display display-hero" style="margin-top: 32px;">
+      Arquitetura antes de<br>alocação.
+    </h1>
+
+    <p style="color: rgba(244,239,230,.8); max-width: 52ch; font-size: 16px; line-height: 1.5; margin-top: 24px;">
+      Proposta preparada para <strong style="color: var(--paper); font-weight: 500;">{{NOME_CLIENTE}}</strong>.<br>
+      Família {{SOBRENOME_FAMILIA}}. {{CIDADE}}, {{MÊS_ANO}}.
+    </p>
+  </div>
+
+  <div class="page-footer">
+    <span>MAGNO Gestão Patrimonial</span>
+    <span>01 / 10</span>
+  </div>
+</div>
+
+
+<!-- ===================================================================
+  PÁGINA 2 — MANIFESTO
+  =================================================================== -->
+<div class="page">
+  <div class="page-header">
+    <span>MAGNO</span>
+    <span>Manifesto</span>
+  </div>
+
+  <div style="padding-top: 56px;">
+    <h2 class="display display-l">A firma que nasce do seu ponto de vista — não do portfólio do banco.</h2>
+
+    <p class="lead">
+      MAGNO é um <em>family office</em> boutique independente para empresários brasileiros de 1ª geração
+      em fase pós-liquidez. O modelo é <em>fee-based</em> puro: zero rebate, zero comissão de produto,
+      zero contrato de distribuição. A única conta que temos a pagar é a do cliente.
+    </p>
+
+    <p>
+      Atendemos um número pequeno de famílias, por decisão. Quem conduz o atendimento é partner com
+      15 anos ou mais de mercado — não há <em>associate</em> entre você e a decisão.
+    </p>
+
+    <p>
+      A primeira entrega não é uma carteira. É o desenho da arquitetura: holding, sucessão,
+      governança familiar, camada tributária, <em>offshore</em> legal. A alocação é consequência
+      da estrutura — não o ponto de partida.
+    </p>
+
+    <div class="divider"></div>
+
+    <div class="pullquote">
+      <p>A primeira firma patrimonial da sua vida. A última que você vai precisar contratar.</p>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>MAGNO · magno.capital</span>
+    <span>02 / 10</span>
+  </div>
+</div>
+
+
+<!-- ===================================================================
+  PÁGINA 3 — POSICIONAMENTO E INIMIGOS
+  =================================================================== -->
+<div class="page">
+  <div class="page-header">
+    <span>MAGNO</span>
+    <span>Posicionamento</span>
+  </div>
+
+  <div style="padding-top: 56px;">
+    <span class="eyebrow">01 · O lugar de MAGNO no mercado</span>
+    <h2 class="display display-l" style="margin-top: 10px;">A terceira opção — a que não existia com nome.</h2>
+
+    <p>
+      O mercado brasileiro de gestão patrimonial de alta renda divide o empresário pós-liquidez
+      entre dois lados ocupados. Nenhum deles, por construção, está do seu lado da mesa.
+    </p>
+
+    <div class="grid-2" style="margin-top: 24px;">
+      <div>
+        <h4 class="display display-s">Private banking de prateleira</h4>
+        <p>
+          Atende com seriedade e vende, na mesma reunião, o produto que o banco precisa distribuir
+          naquele mês. A seriedade é real. O alinhamento de interesses, não.
+        </p>
+      </div>
+      <div>
+        <h4 class="display display-s">Wealth advisor de Instagram</h4>
+        <p>
+          Monta fundo próprio, empurra alocação tática para um patrimônio que não construiu. A
+          linguagem é próxima. A profundidade, não.
+        </p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <span class="eyebrow">02 · O que MAGNO reivindica</span>
+    <h3 class="display display-m" style="margin-top: 10px;">Arquitetura antes de alocação.</h3>
+
+    <p>
+      A palavra que MAGNO planta no mercado é <em>arquitetura</em>. Enquanto concorrentes disputam
+      "performance", "acesso" e "produtos exclusivos", MAGNO desenha a estrutura patrimonial —
+      holding, sucessão, governança familiar, tributação, <em>offshore</em> — antes de qualquer
+      conversa sobre alocação. A carteira vem depois, e é consequência da estrutura.
+    </p>
+  </div>
+
+  <div class="page-footer">
+    <span>MAGNO · magno.capital</span>
+    <span>03 / 10</span>
+  </div>
+</div>
+
+
+<!-- ===================================================================
+  PÁGINA 4 — MODELO DE ATENDIMENTO
+  =================================================================== -->
+<div class="page">
+  <div class="page-header">
+    <span>MAGNO</span>
+    <span>Modelo de atendimento</span>
+  </div>
+
+  <div style="padding-top: 56px;">
+    <span class="eyebrow">Como MAGNO opera</span>
+    <h2 class="display display-l" style="margin-top: 10px;">Quatro linhas que MAGNO não cruza.</h2>
+
+    <p>
+      O modelo não é postural — é estrutural. Quatro decisões técnicas, tomadas no primeiro dia
+      da firma, definem como MAGNO trabalha em todo cliente.
+    </p>
+
+    <div class="divider"></div>
+
+    <div style="display: grid; grid-template-columns: 40px 1fr; gap: 16px 24px; margin: 20px 0;">
+      <span class="num" style="font-size: 13px; color: var(--neutral-50);">01</span>
+      <div>
+        <h4 style="font-family: var(--font-sans); font-weight: 500; font-size: 14px; color: var(--ink); margin-bottom: 6px;">Cliente no centro, não o produto.</h4>
+        <p style="margin-bottom: 0;">Toda decisão de arquitetura começa nos objetivos patrimoniais, sucessórios e de liquidez do cliente. Produto é consequência — e só entra se a arquitetura pedir.</p>
+      </div>
+
+      <span class="num" style="font-size: 13px; color: var(--neutral-50);">02</span>
+      <div>
+        <h4 style="font-family: var(--font-sans); font-weight: 500; font-size: 14px; color: var(--ink); margin-bottom: 6px;">Arquitetura antes de alocação.</h4>
+        <p style="margin-bottom: 0;">A primeira entrega é o desenho da holding, da sucessão, do <em>offshore</em>, da governança e do tributário. A carteira financeira vem em seguida, já dentro da estrutura.</p>
+      </div>
+
+      <span class="num" style="font-size: 13px; color: var(--neutral-50);">03</span>
+      <div>
+        <h4 style="font-family: var(--font-sans); font-weight: 500; font-size: 14px; color: var(--ink); margin-bottom: 6px;">Apenas partners (15+ anos) no <em>client-facing</em>.</h4>
+        <p style="margin-bottom: 0;">Não há <em>associate</em> entre o cliente e a decisão. Quem atende é sênior. Quem desenha é sênior. Quem revisa é sênior.</p>
+      </div>
+
+      <span class="num" style="font-size: 13px; color: var(--neutral-50);">04</span>
+      <div>
+        <h4 style="font-family: var(--font-sans); font-weight: 500; font-size: 14px; color: var(--ink); margin-bottom: 6px;">100% fee-based sobre AUM.</h4>
+        <p style="margin-bottom: 0;">Zero rebate. Zero comissão de produto. Zero contrato de distribuição. A única conta que MAGNO tem a pagar é a do cliente — e é explícita, auditável, registrada.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>MAGNO · magno.capital</span>
+    <span>04 / 10</span>
+  </div>
+</div>
+
+
+<!-- ===================================================================
+  PÁGINA 5 — ESCOPO (O QUE MAGNO FAZ)
+  =================================================================== -->
+<div class="page">
+  <div class="page-header">
+    <span>MAGNO</span>
+    <span>Escopo de atuação</span>
+  </div>
+
+  <div style="padding-top: 56px;">
+    <span class="eyebrow">O que MAGNO desenha</span>
+    <h2 class="display display-l" style="margin-top: 10px;">Arquitetura patrimonial sistêmica.</h2>
+
+    <p>
+      Cada família tem um desenho único. As frentes abaixo compõem o escopo máximo da entrega
+      MAGNO. Cada caso ativa um subconjunto — o que a arquitetura real do cliente pedir.
+    </p>
+
+    <div class="grid-2" style="margin-top: 24px;">
+      <div>
+        <h4 class="display display-s">Estrutura patrimonial</h4>
+        <ul>
+          <li>Holding patrimonial (desenho, implementação, revisão)</li>
+          <li>Separação patrimônio produtivo × financeiro</li>
+          <li>Reestruturação societária pós-M&A / secondary</li>
+          <li>Consolidação de ativos dispersos</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="display display-s">Sucessão e governança</h4>
+        <ul>
+          <li>Desenho de sucessão multi-geracional</li>
+          <li>Governança familiar (conselho, regimento, fluxos)</li>
+          <li>Usufruto vidente, doação com reserva</li>
+          <li>Arbitragem preventiva entre herdeiros</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="display display-s">Tributação e offshore</h4>
+        <ul>
+          <li>Planejamento tributário de longo prazo</li>
+          <li>Estrutura <em>offshore</em> (EUA, Jersey, Suíça) via parceiros</li>
+          <li><em>Trust</em> / fundação (quando cabível)</li>
+          <li>Residência fiscal e mobilidade internacional</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="display display-s">Alocação e execução</h4>
+        <ul>
+          <li>Política de investimentos (IPS) customizada</li>
+          <li>Alocação estratégica e tática fee-only</li>
+          <li>Seleção de gestores terceirizados sem conflito</li>
+          <li>Monitoramento e reporting trimestral auditável</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <p style="font-size: 12px; color: var(--neutral-50);">
+      <strong style="color: var(--ink-65); font-weight: 500;">O que MAGNO não faz:</strong>
+      distribuição de produtos de terceiros, custódia de ativos, corretagem, venda de seguros
+      comissionados, consultoria tributária autônoma (essa é responsabilidade do escritório
+      jurídico da família — MAGNO coordena, não substitui).
+    </p>
+  </div>
+
+  <div class="page-footer">
+    <span>MAGNO · magno.capital</span>
+    <span>05 / 10</span>
+  </div>
+</div>
+
+
+<!-- ===================================================================
+  PÁGINA 6 — FASES DA ENTREGA
+  =================================================================== -->
+<div class="page">
+  <div class="page-header">
+    <span>MAGNO</span>
+    <span>Fases da entrega</span>
+  </div>
+
+  <div style="padding-top: 56px;">
+    <span class="eyebrow">Roteiro de 10 a 14 semanas</span>
+    <h2 class="display display-l" style="margin-top: 10px;">Do diagnóstico à arquitetura em operação.</h2>
+
+    <p>
+      A primeira estruturação completa ocorre em três fases, tipicamente entre 10 e 14 semanas.
+      Cada fase tem escopo fechado, reuniões pré-agendadas, e entregável auditável.
+    </p>
+
+    <table style="margin-top: 24px;">
+      <thead>
+        <tr>
+          <th style="width: 22%;">Fase</th>
+          <th style="width: 22%;">Duração</th>
+          <th style="width: 56%;">Entregáveis principais</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <strong style="font-family: var(--font-sans); font-weight: 500; color: var(--ink);">01 · Diagnóstico patrimonial</strong>
+          </td>
+          <td class="num">3–4 semanas</td>
+          <td>
+            Consolidação completa de ativos, passivos, estruturas societárias,
+            obrigações tributárias. Mapa de riscos e oportunidades estruturais.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <strong style="font-family: var(--font-sans); font-weight: 500; color: var(--ink);">02 · Desenho da arquitetura</strong>
+          </td>
+          <td class="num">4–6 semanas</td>
+          <td>
+            Proposta de holding, sucessão, tributário, <em>offshore</em>, governança.
+            Revisão com advogado e contador da família. Ajustes e aprovação final.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <strong style="font-family: var(--font-sans); font-weight: 500; color: var(--ink);">03 · Implementação e IPS</strong>
+          </td>
+          <td class="num">3–4 semanas</td>
+          <td>
+            Execução jurídica da arquitetura (via advogados da família). Política de
+            Investimentos (IPS) pactuada. Alocação inicial. Reporting ativo.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="divider"></div>
+
+    <p style="font-size: 12px; color: var(--neutral-50);">
+      A partir do fim da Fase 03, o relacionamento passa a ser de <strong style="color: var(--ink-65); font-weight: 500;">manutenção e revisão</strong>:
+      reuniões mensais operacionais, reuniões trimestrais estratégicas, reuniões anuais de
+      revisão completa da arquitetura. A arquitetura é revisitada sempre que há evento
+      relevante (casamento, nascimento, novo M&A, mudança fiscal material).
+    </p>
+  </div>
+
+  <div class="page-footer">
+    <span>MAGNO · magno.capital</span>
+    <span>06 / 10</span>
+  </div>
+</div>
+
+
+<!-- ===================================================================
+  PÁGINA 7 — MODELO ECONÔMICO
+  =================================================================== -->
+<div class="page">
+  <div class="page-header">
+    <span>MAGNO</span>
+    <span>Modelo econômico</span>
+  </div>
+
+  <div style="padding-top: 56px;">
+    <span class="eyebrow">Remuneração fee-only — auditável, explícita, única</span>
+    <h2 class="display display-l" style="margin-top: 10px;">Uma só conta. Do cliente.</h2>
+
+    <p>
+      MAGNO cobra apenas duas linhas, ambas registradas em contrato e auditáveis: um
+      <em>setup fee</em> único na Fase 01–02, e uma taxa sobre AUM a partir da Fase 03.
+      Nenhuma outra forma de remuneração — direta ou indireta — é aceita.
+    </p>
+
+    <div class="divider"></div>
+
+    <h3 class="display display-m">01 · Setup fee de estruturação</h3>
+    <p>
+      Pago em três parcelas (início, meio e fim da implementação). Reflete a complexidade da
+      arquitetura — não o tamanho do patrimônio.
+    </p>
+
+    <div class="grid-3" style="margin: 20px 0;">
+      <div class="metric">
+        <div class="label">Baixa complexidade</div>
+        <div class="value">R$ 120k</div>
+      </div>
+      <div class="metric">
+        <div class="label">Média complexidade</div>
+        <div class="value">R$ 180k–240k</div>
+      </div>
+      <div class="metric">
+        <div class="label">Alta complexidade</div>
+        <div class="value">até R$ 300k</div>
+      </div>
+    </div>
+
+    <p style="font-size: 12px; color: var(--neutral-50);">
+      Complexidade é função de: múltiplas empresas operacionais, sucessão entre 3+ herdeiros
+      com interesses divergentes, estrutura <em>offshore</em> multi-jurisdição, M&A em aberto,
+      exposição a jurisdições fiscais internacionais.
+    </p>
+
+    <div class="divider"></div>
+
+    <h3 class="display display-m">02 · Taxa sobre AUM (a partir da Fase 03)</h3>
+    <p>
+      Aplicada em <em>tiers</em> decrescentes sobre o patrimônio financeiro sob arquitetura MAGNO.
+      Patrimônio produtivo (equity em empresas operacionais) não entra no AUM fee.
+    </p>
+
+    <table style="margin-top: 16px;">
+      <thead>
+        <tr>
+          <th>Faixa de AUM</th>
+          <th style="text-align: right;">Taxa a.a.</th>
+          <th style="text-align: right;">Exemplo · R$ 80M</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Até R$ 50M</td>
+          <td class="num">0,75 %</td>
+          <td class="num">R$ 375k</td>
+        </tr>
+        <tr>
+          <td>De R$ 50M a R$ 150M</td>
+          <td class="num">0,60 %</td>
+          <td class="num">R$ 180k</td>
+        </tr>
+        <tr>
+          <td>Acima de R$ 150M</td>
+          <td class="num">0,45 %</td>
+          <td class="num">—</td>
+        </tr>
+        <tr>
+          <td style="font-weight: 500; color: var(--ink);">Total anual · R$ 80M de AUM</td>
+          <td></td>
+          <td class="num" style="color: var(--accent); font-size: 14px;">R$ 555k</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="font-size: 12px; color: var(--neutral-50); margin-top: 12px;">
+      Faturamento trimestral antecipado. Valores anuais recalculados ao fim de cada trimestre
+      com base no AUM efetivo do período. Ajuste anual por IPCA.
+    </p>
+  </div>
+
+  <div class="page-footer">
+    <span>MAGNO · magno.capital</span>
+    <span>07 / 10</span>
+  </div>
+</div>
+
+
+<!-- ===================================================================
+  PÁGINA 8 — TIME E GOVERNANÇA INTERNA
+  =================================================================== -->
+<div class="page">
+  <div class="page-header">
+    <span>MAGNO</span>
+    <span>Time e governança</span>
+  </div>
+
+  <div style="padding-top: 56px;">
+    <span class="eyebrow">Quem conduz a relação</span>
+    <h2 class="display display-l" style="margin-top: 10px;">Apenas partners no client-facing.</h2>
+
+    <p>
+      O atendimento é feito por um <em>lead partner</em> responsável pelo relacionamento e
+      pela arquitetura, apoiado por um segundo partner em decisões estruturais. Não há
+      <em>associate</em> na equação.
+    </p>
+
+    <div class="divider"></div>
+
+    <div class="grid-2" style="margin-top: 20px;">
+      <div style="border: 0.5px solid var(--neutral-20); padding: 20px;">
+        <span class="eyebrow" style="font-size: 10px;">Lead partner</span>
+        <h4 style="font-family: var(--font-serif); font-weight: 500; font-size: 20px; color: var(--ink); margin-top: 10px; margin-bottom: 8px;">{{NOME_PARTNER_LEAD}}</h4>
+        <p style="font-size: 12px; margin-bottom: 0;">
+          {{BIO_PARTNER_LEAD}}<br>
+          {{XX}} anos de mercado. Ex-{{BANCO_OU_FIRMA_ANTERIOR}}.
+          Foco: arquitetura patrimonial integrada, sucessão multi-geracional, estruturas offshore.
+        </p>
+      </div>
+
+      <div style="border: 0.5px solid var(--neutral-20); padding: 20px;">
+        <span class="eyebrow" style="font-size: 10px;">Second partner</span>
+        <h4 style="font-family: var(--font-serif); font-weight: 500; font-size: 20px; color: var(--ink); margin-top: 10px; margin-bottom: 8px;">{{NOME_PARTNER_2}}</h4>
+        <p style="font-size: 12px; margin-bottom: 0;">
+          {{BIO_PARTNER_2}}<br>
+          {{XX}} anos de mercado. Ex-{{BANCO_OU_FIRMA_ANTERIOR}}.
+          Foco: alocação estratégica, risco, política de investimentos.
+        </p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <h3 class="display display-m" style="margin-top: 10px;">Governança interna</h3>
+    <p>
+      Toda decisão de arquitetura passa por revisão entre os dois partners responsáveis e
+      por aprovação no <em>Investment Committee</em> da firma (que inclui os outros partners
+      de MAGNO + 1 consultor externo sênior — advogado de sucessão ou economista).
+    </p>
+
+    <p>
+      Carta trimestral institucional pública, disponibilizada em <strong style="color: var(--ink); font-weight: 500;">magno.capital/cartas</strong>,
+      documenta a tese ativa da firma e suas revisões. Nenhum cliente é identificável.
+    </p>
+  </div>
+
+  <div class="page-footer">
+    <span>MAGNO · magno.capital</span>
+    <span>08 / 10</span>
+  </div>
+</div>
+
+
+<!-- ===================================================================
+  PÁGINA 9 — ESCOPO CONTRATADO (PERSONALIZÁVEL)
+  =================================================================== -->
+<div class="page">
+  <div class="page-header">
+    <span>MAGNO</span>
+    <span>Escopo contratado · {{NOME_CLIENTE}}</span>
+  </div>
+
+  <div style="padding-top: 56px;">
+    <span class="eyebrow">Proposta específica</span>
+    <h2 class="display display-l" style="margin-top: 10px;">O que está contratado nesta relação.</h2>
+
+    <p>
+      Esta seção consolida os termos específicos acordados com {{NOME_CLIENTE}}, conforme
+      reuniões de diagnóstico de {{DATAS_REUNIOES}}. Os valores refletem a complexidade
+      mapeada e estão registrados em contrato.
+    </p>
+
+    <div class="divider"></div>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 58%;">Item</th>
+          <th style="width: 42%; text-align: right;">Valor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong style="font-family: var(--font-sans); font-weight: 500; color: var(--ink);">Complexidade estimada</strong></td>
+          <td class="num">{{COMPLEXIDADE}}</td>
+        </tr>
+        <tr>
+          <td>Patrimônio financeiro inicial sob gestão (AUM)</td>
+          <td class="num">R$ {{AUM_INICIAL}}</td>
+        </tr>
+        <tr>
+          <td>Setup fee (pago em 3 parcelas)</td>
+          <td class="num">R$ {{SETUP_FEE}}</td>
+        </tr>
+        <tr>
+          <td>Taxa sobre AUM ano 1 (estimativa)</td>
+          <td class="num">R$ {{FEE_AUM_ANO1}}</td>
+        </tr>
+        <tr>
+          <td>Prazo da primeira estruturação (Fases 01–03)</td>
+          <td class="num">{{PRAZO_SEMANAS}} semanas</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="divider"></div>
+
+    <h4 class="display display-s">Frentes ativadas</h4>
+    <ul>
+      <li>{{FRENTE_01}} — {{DESCRICAO_01}}</li>
+      <li>{{FRENTE_02}} — {{DESCRICAO_02}}</li>
+      <li>{{FRENTE_03}} — {{DESCRICAO_03}}</li>
+      <li>{{FRENTE_04}} — {{DESCRICAO_04}}</li>
+    </ul>
+
+    <div class="divider"></div>
+
+    <h4 class="display display-s">Próximos passos</h4>
+    <ol>
+      <li>Assinatura do contrato de prestação de serviços em {{DATA_ASSINATURA}}</li>
+      <li>Pagamento da 1ª parcela do <em>setup fee</em> em D+5 dias úteis</li>
+      <li>Primeira reunião formal da Fase 01 agendada para {{DATA_KICKOFF}}</li>
+      <li>Acesso ao portal do cliente {{URL_PORTAL}}</li>
+    </ol>
+  </div>
+
+  <div class="page-footer">
+    <span>MAGNO · magno.capital</span>
+    <span>09 / 10</span>
+  </div>
+</div>
+
+
+<!-- ===================================================================
+  PÁGINA 10 — FECHO E ASSINATURA
+  =================================================================== -->
+<div class="page page--accent">
+  <div class="page-header">
+    <span>MAGNO · Fecho</span>
+    <span>{{DATA_PROPOSTA}}</span>
+  </div>
+
+  <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 32px;">
+    <svg class="mono-svg" width="64" height="64" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="1.4"/>
+      <g fill="currentColor">
+        <rect x="22.5" y="26" width="7.5" height="48"/>
+        <rect x="19" y="26" width="14.5" height="1.6"/>
+        <rect x="19" y="72.4" width="14.5" height="1.6"/>
+        <rect x="70" y="26" width="7.5" height="48"/>
+        <rect x="66.5" y="26" width="14.5" height="1.6"/>
+        <rect x="66.5" y="72.4" width="14.5" height="1.6"/>
+        <polygon points="30,26 33.2,26 51.6,61 48.4,61"/>
+        <polygon points="66.8,26 70,26 51.6,61 48.4,61"/>
+      </g>
+    </svg>
+
+    <h1 class="display" style="font-size: 52px; line-height: 1.05;">
+      A primeira firma<br>patrimonial da<br>sua&nbsp;vida.
+    </h1>
+
+    <p style="color: rgba(244,239,230,.9); font-size: 15px; line-height: 1.5; max-width: 56ch;">
+      A última que você vai precisar contratar. Arquitetura antes de alocação.
+    </p>
+
+    <div style="margin-top: 32px;">
+      <span class="eyebrow" style="font-size: 11px;">Assinaturas</span>
+      <div class="grid-2" style="margin-top: 24px;">
+        <div>
+          <div style="height: 60px; border-bottom: 0.5px solid rgba(244,239,230,.6);"></div>
+          <span class="eyebrow" style="font-size: 10px; margin-top: 10px; display: block;">{{NOME_PARTNER_LEAD}} · MAGNO</span>
+        </div>
+        <div>
+          <div style="height: 60px; border-bottom: 0.5px solid rgba(244,239,230,.6);"></div>
+          <span class="eyebrow" style="font-size: 10px; margin-top: 10px; display: block;">{{NOME_CLIENTE}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>MAGNO Gestão Patrimonial · magno.capital · contato@magno.capital</span>
+    <span>10 / 10</span>
+  </div>
+</div>
+
+</body>
+</html>

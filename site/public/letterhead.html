@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>MAGNO — Papel timbrado</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+  <style>
+    :root {
+      --ink:        #0E0E10;
+      --ink-65:     #4A4A4E;
+      --paper:      #F4EFE6;
+      --paper-pure: #FFFFFF;
+      --accent:     #5A1F25;
+      --neutral-50: #6B6A67;
+      --neutral-20: #B8B3A9;
+
+      --font-serif: 'Fraunces', 'Tiempos Headline', Georgia, serif;
+      --font-sans:  'Inter', -apple-system, sans-serif;
+      --font-mono:  'IBM Plex Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { background: #2e2e30; }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--ink);
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .variant-label {
+      color: #d0d0d0;
+      font-family: var(--font-sans);
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    /* A4: 210×297mm = 794×1123 px @ 96dpi. Impressão em 300dpi = 2480×3508. */
+    .sheet {
+      width: 794px;
+      height: 1123px;
+      background: var(--paper-pure);
+      padding: 60px 72px 56px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 8px 40px rgba(0,0,0,.35);
+    }
+
+    .sheet--pergamino { background: var(--paper); }
+
+    /* ============== HEADER ============== */
+
+    .lh-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .lh-brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .lh-wordmark {
+      font-family: var(--font-serif);
+      font-weight: 500;
+      font-size: 32px;
+      letter-spacing: 0.14em;
+      color: var(--ink);
+    }
+
+    .lh-subtitle {
+      font-family: var(--font-sans);
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--neutral-50);
+      font-weight: 500;
+      margin-top: 4px;
+    }
+
+    .lh-meta {
+      text-align: right;
+      font-family: var(--font-sans);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--neutral-50);
+      line-height: 1.6;
+    }
+
+    /* ============== SEPARADOR ============== */
+
+    .lh-separator {
+      height: 0.5px;
+      background: var(--neutral-20);
+      margin: 24px 0;
+    }
+
+    /* ============== CONTEÚDO ============== */
+
+    .lh-location {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      color: var(--ink-65);
+      margin-bottom: 24px;
+    }
+
+    .lh-recipient {
+      margin-bottom: 20px;
+    }
+
+    .lh-recipient-label {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    .lh-recipient-addr {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      color: var(--ink-65);
+      line-height: 1.5;
+    }
+
+    .lh-greeting {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      color: var(--ink);
+      margin: 24px 0 16px;
+    }
+
+    .lh-body {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--ink-65);
+      max-width: 58ch;
+      margin-bottom: 14px;
+    }
+
+    .lh-body strong { color: var(--ink); font-weight: 500; }
+    .lh-body em { font-style: italic; }
+
+    /* ============== ASSINATURA ============== */
+
+    .lh-signature {
+      margin-top: 40px;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--ink);
+    }
+
+    .lh-sig-block {
+      margin-top: 32px;
+      padding-top: 12px;
+      border-top: 0.5px solid var(--neutral-20);
+      display: inline-block;
+      min-width: 240px;
+    }
+
+    .lh-sig-name { font-family: var(--font-sans); font-weight: 500; font-size: 13px; color: var(--ink); }
+    .lh-sig-role { font-family: var(--font-sans); font-size: 11px; color: var(--neutral-50); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 4px; }
+
+    /* ============== FOOTER ============== */
+
+    .lh-footer {
+      margin-top: auto;
+      padding-top: 20px;
+      border-top: 0.5px solid var(--neutral-20);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      font-family: var(--font-sans);
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--neutral-50);
+      line-height: 1.6;
+    }
+
+    .lh-footer-col { display: flex; flex-direction: column; gap: 2px; }
+    .lh-footer-tagline {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+    }
+
+    .mono-svg { color: currentColor; }
+
+    /* ============== VERSÃO COM MARCA D'ÁGUA ============== */
+
+    .watermark-M {
+      position: absolute;
+      right: -60px;
+      bottom: -60px;
+      width: 340px;
+      height: 340px;
+      color: rgba(14, 14, 16, 0.03);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .sheet-content { position: relative; z-index: 1; flex: 1; display: flex; flex-direction: column; }
+
+    @media print {
+      html { background: #fff; }
+      body { padding: 0; gap: 0; }
+      .sheet { box-shadow: none; width: 210mm; height: 297mm; padding: 22mm 20mm 18mm; page-break-after: always; }
+      .variant-label { display: none; }
+    }
+
+    @page {
+      size: A4;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+
+<!-- ===================================================================
+  VARIANTE 01 — CARTA FORMAL (papel branco, padrão institucional)
+  =================================================================== -->
+<span class="variant-label">01 · Carta formal · papel branco · A4</span>
+<div class="sheet">
+  <svg class="watermark-M" viewBox="0 0 100 100">
+    <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="1.4"/>
+    <g fill="currentColor">
+      <rect x="22.5" y="26" width="7.5" height="48"/>
+      <rect x="19" y="26" width="14.5" height="1.6"/>
+      <rect x="19" y="72.4" width="14.5" height="1.6"/>
+      <rect x="70" y="26" width="7.5" height="48"/>
+      <rect x="66.5" y="26" width="14.5" height="1.6"/>
+      <rect x="66.5" y="72.4" width="14.5" height="1.6"/>
+      <polygon points="30,26 33.2,26 51.6,61 48.4,61"/>
+      <polygon points="66.8,26 70,26 51.6,61 48.4,61"/>
+    </g>
+  </svg>
+
+  <div class="sheet-content">
+    <div class="lh-header">
+      <div class="lh-brand">
+        <svg class="mono-svg" width="48" height="48" viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <g fill="currentColor">
+            <rect x="22.5" y="26" width="7.5" height="48"/>
+            <rect x="19" y="26" width="14.5" height="1.6"/>
+            <rect x="19" y="72.4" width="14.5" height="1.6"/>
+            <rect x="70" y="26" width="7.5" height="48"/>
+            <rect x="66.5" y="26" width="14.5" height="1.6"/>
+            <rect x="66.5" y="72.4" width="14.5" height="1.6"/>
+            <polygon points="30,26 33.2,26 51.6,61 48.4,61"/>
+            <polygon points="66.8,26 70,26 51.6,61 48.4,61"/>
+          </g>
+        </svg>
+        <div>
+          <div class="lh-wordmark">MAGNO</div>
+          <div class="lh-subtitle">Gestão Patrimonial</div>
+        </div>
+      </div>
+      <div class="lh-meta">
+        Carta institucional<br>
+        Ref: {{REF_CARTA}}
+      </div>
+    </div>
+
+    <div class="lh-separator"></div>
+
+    <div class="lh-location">
+      São Paulo, {{DIA}} de {{MES}} de {{ANO}}.
+    </div>
+
+    <div class="lh-recipient">
+      <div class="lh-recipient-label">{{NOME_DESTINATARIO}}</div>
+      <div class="lh-recipient-addr">
+        {{CARGO_DESTINATARIO}}<br>
+        {{EMPRESA}}<br>
+        {{ENDERECO_LINHA_1}}<br>
+        {{ENDERECO_LINHA_2}}
+      </div>
+    </div>
+
+    <div class="lh-greeting">
+      Prezado(a) {{PRIMEIRO_NOME}},
+    </div>
+
+    <p class="lh-body">
+      Encaminhamos em anexo a <strong>revisão trimestral da arquitetura patrimonial</strong>
+      referente ao trimestre encerrado em {{FIM_TRIMESTRE}}. O documento cobre quatro frentes:
+      consolidação patrimonial, desempenho por <em>bucket</em>, ajustes sugeridos no <em>offshore</em>,
+      e próximos passos da sucessão.
+    </p>
+
+    <p class="lh-body">
+      A carta trimestral institucional da firma, pública e sem identificação de clientes, está
+      disponível em <strong>magno.capital/cartas</strong> e compõe leitura complementar a este
+      relatório.
+    </p>
+
+    <p class="lh-body">
+      Estamos à disposição para discutir qualquer ponto por telefone, em reunião presencial ou
+      por vídeo, à sua preferência.
+    </p>
+
+    <div class="lh-signature">
+      Atenciosamente,
+    </div>
+
+    <div class="lh-sig-block">
+      <div class="lh-sig-name">{{NOME_PARTNER}}</div>
+      <div class="lh-sig-role">Partner · MAGNO Gestão Patrimonial</div>
+    </div>
+
+    <div class="lh-footer">
+      <div class="lh-footer-col">
+        <span>MAGNO Gestão Patrimonial Ltda.</span>
+        <span>CNPJ {{CNPJ}}</span>
+        <span>Av. Brigadeiro Faria Lima, {{NUM}} · 16º andar</span>
+        <span>Itaim Bibi · São Paulo · SP · {{CEP}}</span>
+      </div>
+      <div class="lh-footer-col" style="text-align: right;">
+        <span>+55 11 {{TELEFONE}}</span>
+        <span>contato@magno.capital</span>
+        <span>magno.capital</span>
+        <span class="lh-footer-tagline">Arquitetura antes de alocação.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ===================================================================
+  VARIANTE 02 — CARTA EM PAPEL PERGAMINHO
+  (mesma estrutura, fundo pergaminho — uso para cartas institucionais
+  impressas em papel premium)
+  =================================================================== -->
+<span class="variant-label">02 · Carta institucional · pergaminho · A4</span>
+<div class="sheet sheet--pergamino">
+  <svg class="watermark-M" viewBox="0 0 100 100">
+    <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="1.4"/>
+    <g fill="currentColor">
+      <rect x="22.5" y="26" width="7.5" height="48"/>
+      <rect x="19" y="26" width="14.5" height="1.6"/>
+      <rect x="19" y="72.4" width="14.5" height="1.6"/>
+      <rect x="70" y="26" width="7.5" height="48"/>
+      <rect x="66.5" y="26" width="14.5" height="1.6"/>
+      <rect x="66.5" y="72.4" width="14.5" height="1.6"/>
+      <polygon points="30,26 33.2,26 51.6,61 48.4,61"/>
+      <polygon points="66.8,26 70,26 51.6,61 48.4,61"/>
+    </g>
+  </svg>
+
+  <div class="sheet-content">
+    <div class="lh-header">
+      <div class="lh-brand">
+        <svg class="mono-svg" width="48" height="48" viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <g fill="currentColor">
+            <rect x="22.5" y="26" width="7.5" height="48"/>
+            <rect x="19" y="26" width="14.5" height="1.6"/>
+            <rect x="19" y="72.4" width="14.5" height="1.6"/>
+            <rect x="70" y="26" width="7.5" height="48"/>
+            <rect x="66.5" y="26" width="14.5" height="1.6"/>
+            <rect x="66.5" y="72.4" width="14.5" height="1.6"/>
+            <polygon points="30,26 33.2,26 51.6,61 48.4,61"/>
+            <polygon points="66.8,26 70,26 51.6,61 48.4,61"/>
+          </g>
+        </svg>
+        <div>
+          <div class="lh-wordmark">MAGNO</div>
+          <div class="lh-subtitle">Gestão Patrimonial</div>
+        </div>
+      </div>
+      <div class="lh-meta">
+        Convite&nbsp;· Mesa redonda<br>
+        {{DATA_EVENTO}}
+      </div>
+    </div>
+
+    <div class="lh-separator"></div>
+
+    <div class="lh-location">São Paulo, abril de 2026.</div>
+
+    <div class="lh-recipient">
+      <div class="lh-recipient-label">{{NOME_CONVIDADO}}</div>
+    </div>
+
+    <div class="lh-greeting">Prezado(a) {{PRIMEIRO_NOME}},</div>
+
+    <p class="lh-body">
+      MAGNO promoverá em {{DATA_EVENTO}} a terceira edição de sua mesa redonda trimestral sobre
+      <strong>arquitetura patrimonial pós-liquidez</strong>. O formato é fechado, sem mídia,
+      sem gravação — oito participantes selecionados e três partners.
+    </p>
+
+    <p class="lh-body">
+      A edição de {{MES_EVENTO}} discute o <em>impacto composto do rebate em portfólios
+      familiares</em> à luz dos dados levantados em nossa carta trimestral Q1/2026. A pauta
+      integral é anexa.
+    </p>
+
+    <p class="lh-body">
+      O encontro ocorre em nosso escritório no Itaim Bibi, das {{HORA_INICIO}} às {{HORA_FIM}}.
+      Sem trajes específicos. Jantar é servido ao final.
+    </p>
+
+    <p class="lh-body">
+      Por favor confirme presença até {{DATA_RSVP}} em resposta a este e-mail ou pelo telefone
+      abaixo.
+    </p>
+
+    <div class="lh-signature">Com estima,</div>
+
+    <div class="lh-sig-block">
+      <div class="lh-sig-name">{{NOME_PARTNER}}</div>
+      <div class="lh-sig-role">Partner · MAGNO Gestão Patrimonial</div>
+    </div>
+
+    <div class="lh-footer">
+      <div class="lh-footer-col">
+        <span>MAGNO Gestão Patrimonial Ltda.</span>
+        <span>Av. Brigadeiro Faria Lima, {{NUM}}</span>
+        <span>Itaim Bibi · SP · {{CEP}}</span>
+      </div>
+      <div class="lh-footer-col" style="text-align: right;">
+        <span>+55 11 {{TELEFONE}}</span>
+        <span>contato@magno.capital</span>
+        <span class="lh-footer-tagline">Arquitetura antes de alocação.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

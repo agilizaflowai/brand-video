@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1800" font-family="Fraunces, 'GT Sectra', 'Tiempos Headline', 'Bodoni Moda', Georgia, serif" role="img" aria-label="Sistema de Logo MAGNO">
+  <title>MAGNO — Sistema de Logo</title>
+  <desc>Variações do logo MAGNO: primary horizontal lockup, wordmark, monograma, lockup vertical, aplicação em bordô, reversa em antracite, favicon 32px.</desc>
+
+  <!-- ====================================================================
+       DEFINIÇÕES REUTILIZÁVEIS
+       Monograma M e Wordmark MAGNO como <symbol> para reuso em qualquer
+       escala e cor. Cor é controlada via currentColor no CSS do consumidor.
+       ==================================================================== -->
+  <defs>
+    <!-- MONOGRAMA M — construído como paths vetoriais, independente de fonte.
+         Sistema: círculo fino (wax seal), M de alto contraste no centro.
+         Proporções internas: círculo r=46, M ocupa altura 48 (y 26-74),
+         largura 64 (x 18-82). Postes verticais: largura 8.
+         Diagonais finas (largura ≈3.2) com ápice em (50, 61).
+         Serifas-brackets top/bottom para ancorar o M na baseline ótica. -->
+    <symbol id="monograma" viewBox="0 0 100 100">
+      <!-- Círculo envolvente (stroke-based — mantém delicadeza em escala) -->
+      <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="1.1"/>
+      <!-- Grupo M -->
+      <g fill="currentColor">
+        <!-- Poste esquerdo (vertical grosso) -->
+        <rect x="22.5" y="26" width="7.5" height="48"/>
+        <!-- Serifa superior esquerda (bracket) -->
+        <rect x="19" y="26" width="14.5" height="1.6"/>
+        <!-- Serifa inferior esquerda (bracket) -->
+        <rect x="19" y="72.4" width="14.5" height="1.6"/>
+        <!-- Poste direito -->
+        <rect x="70" y="26" width="7.5" height="48"/>
+        <!-- Serifa superior direita -->
+        <rect x="66.5" y="26" width="14.5" height="1.6"/>
+        <!-- Serifa inferior direita -->
+        <rect x="66.5" y="72.4" width="14.5" height="1.6"/>
+        <!-- Diagonal esquerda (fina) — do topo do poste esquerdo ao ápice central -->
+        <polygon points="30,26 33.2,26 51.6,61 48.4,61"/>
+        <!-- Diagonal direita (fina) — do topo do poste direito ao ápice central -->
+        <polygon points="66.8,26 70,26 51.6,61 48.4,61"/>
+      </g>
+    </symbol>
+
+    <!-- WORDMARK MAGNO — usa <text> com família Fraunces e fallbacks.
+         Production: aplicar "Outline text" no export para garantir fidelidade
+         tipográfica em sistemas sem Fraunces instalado.
+         Tracking: letter-spacing 0.12em reforça gravitas e compensa
+         a alta contraste óptica entre letras. -->
+    <symbol id="wordmark" viewBox="0 0 640 120" preserveAspectRatio="xMidYMid meet">
+      <text x="320" y="92"
+            text-anchor="middle"
+            font-size="108"
+            font-weight="500"
+            letter-spacing="13"
+            fill="currentColor">MAGNO</text>
+    </symbol>
+
+    <!-- Baseline marker utilitária (usada apenas nas exibições de estudo) -->
+  </defs>
+
+  <!-- Fundo pergaminho para a primeira metade do sistema -->
+  <rect width="1400" height="900" fill="#F4EFE6"/>
+
+  <!-- ============================================================
+       1. LOCKUP HORIZONTAL PRIMÁRIO (monograma + wordmark)
+       Uso: hero de site, cabeçalho de proposta, letterhead.
+       ============================================================ -->
+  <g transform="translate(220, 140)" color="#0E0E10">
+    <!-- Legenda -->
+    <text x="0" y="-28" font-family="Inter, -apple-system, Segoe UI, sans-serif"
+          font-size="11" fill="#6B6A67" letter-spacing="2.5"
+          font-weight="500">01 · LOCKUP HORIZONTAL PRIMÁRIO</text>
+    <!-- Monograma 120×120 -->
+    <use href="#monograma" x="0" y="0" width="120" height="120"/>
+    <!-- Separador vertical fino -->
+    <line x1="165" y1="22" x2="165" y2="98" stroke="#0E0E10" stroke-width="0.6" opacity="0.45"/>
+    <!-- Wordmark: altura 64, largura proporcional ≈340 -->
+    <use href="#wordmark" x="200" y="28" width="340" height="64"/>
+  </g>
+
+  <!-- ============================================================
+       2. WORDMARK ISOLADO
+       Uso: assinatura em material textual denso (proposta,
+       cartas, papel timbrado compartilhado com outros elementos).
+       ============================================================ -->
+  <g transform="translate(880, 140)" color="#0E0E10">
+    <text x="0" y="-28" font-family="Inter, -apple-system, Segoe UI, sans-serif"
+          font-size="11" fill="#6B6A67" letter-spacing="2.5"
+          font-weight="500">02 · WORDMARK ISOLADO</text>
+    <use href="#wordmark" x="0" y="28" width="340" height="64"/>
+  </g>
+
+  <!-- ============================================================
+       3. MONOGRAMA ISOLADO (SELO)
+       Uso: favicon, avatar social, selo em rodapé, marca d'água.
+       ============================================================ -->
+  <g transform="translate(220, 420)" color="#0E0E10">
+    <text x="0" y="-28" font-family="Inter, -apple-system, Segoe UI, sans-serif"
+          font-size="11" fill="#6B6A67" letter-spacing="2.5"
+          font-weight="500">03 · MONOGRAMA (SELO)</text>
+    <use href="#monograma" x="0" y="0" width="180" height="180"/>
+  </g>
+
+  <!-- ============================================================
+       4. LOCKUP VERTICAL
+       Uso: cartão de visita retrato, placa de sede, rodapé de site,
+       onde verticalidade vem natural do container.
+       ============================================================ -->
+  <g transform="translate(540, 420)" color="#0E0E10">
+    <text x="90" y="-28" font-family="Inter, -apple-system, Segoe UI, sans-serif"
+          font-size="11" fill="#6B6A67" letter-spacing="2.5"
+          font-weight="500" text-anchor="middle">04 · LOCKUP VERTICAL</text>
+    <!-- Monograma centralizado -->
+    <use href="#monograma" x="15" y="0" width="150" height="150"/>
+    <!-- Wordmark centralizado abaixo -->
+    <use href="#wordmark" x="-40" y="170" width="260" height="49"/>
+  </g>
+
+  <!-- ============================================================
+       5. APLICAÇÃO DE ACENTO BORDÔ (sobre pergaminho)
+       Uso: em materiais onde o acento único ganha presença —
+       capas de relatório, separadores de seção, call-outs.
+       ============================================================ -->
+  <g transform="translate(870, 420)" color="#5A1F25">
+    <text x="0" y="-28" font-family="Inter, -apple-system, Segoe UI, sans-serif"
+          font-size="11" fill="#6B6A67" letter-spacing="2.5"
+          font-weight="500">05 · APLICAÇÃO EM BORDÔ</text>
+    <use href="#monograma" x="0" y="0" width="120" height="120"/>
+    <line x1="165" y1="22" x2="165" y2="98" stroke="#5A1F25" stroke-width="0.6" opacity="0.5"/>
+    <use href="#wordmark" x="200" y="28" width="340" height="64"/>
+  </g>
+
+  <!-- ============================================================
+       6. AREA DE RESPIRO — visualização das margens mínimas.
+       ============================================================ -->
+  <g transform="translate(220, 720)" color="#0E0E10">
+    <text x="0" y="-28" font-family="Inter, -apple-system, Segoe UI, sans-serif"
+          font-size="11" fill="#6B6A67" letter-spacing="2.5"
+          font-weight="500">06 · ÁREA DE RESPIRO MÍNIMA (x = altura do M do wordmark)</text>
+    <!-- Cinza de guias -->
+    <rect x="-70" y="-45" width="680" height="190" fill="none" stroke="#B8B3A9" stroke-width="0.5" stroke-dasharray="2 3"/>
+    <rect x="-35" y="-10" width="610" height="120" fill="none" stroke="#B8B3A9" stroke-width="0.5" stroke-dasharray="2 3"/>
+    <!-- Lockup -->
+    <use href="#monograma" x="0" y="0" width="100" height="100"/>
+    <line x1="140" y1="20" x2="140" y2="80" stroke="#0E0E10" stroke-width="0.5" opacity="0.45"/>
+    <use href="#wordmark" x="170" y="24" width="282" height="53"/>
+    <!-- Label x -->
+    <text x="-50" y="50" font-family="Inter, sans-serif" font-size="10" fill="#6B6A67">x</text>
+    <text x="580" y="50" font-family="Inter, sans-serif" font-size="10" fill="#6B6A67">x</text>
+    <text x="275" y="-20" font-family="Inter, sans-serif" font-size="10" fill="#6B6A67">x</text>
+    <text x="275" y="128" font-family="Inter, sans-serif" font-size="10" fill="#6B6A67">x</text>
+  </g>
+
+  <!-- Divisor -->
+  <line x1="0" y1="900" x2="1400" y2="900" stroke="#0E0E10" stroke-width="0.8" opacity="0.2"/>
+
+  <!-- Fundo antracite para a segunda metade (reversa) -->
+  <rect x="0" y="900" width="1400" height="900" fill="#0E0E10"/>
+
+  <!-- ============================================================
+       7. REVERSA — pergaminho sobre antracite (primária noite)
+       Uso: modo escuro, fotos com overlay, capas editoriais.
+       ============================================================ -->
+  <g transform="translate(220, 1040)" color="#F4EFE6">
+    <text x="0" y="-28" font-family="Inter, -apple-system, Segoe UI, sans-serif"
+          font-size="11" fill="#9A9790" letter-spacing="2.5"
+          font-weight="500">07 · REVERSA — LOCKUP HORIZONTAL</text>
+    <use href="#monograma" x="0" y="0" width="120" height="120"/>
+    <line x1="165" y1="22" x2="165" y2="98" stroke="#F4EFE6" stroke-width="0.6" opacity="0.45"/>
+    <use href="#wordmark" x="200" y="28" width="340" height="64"/>
+  </g>
+
+  <!-- ============================================================
+       8. REVERSA — Monograma isolado
+       ============================================================ -->
+  <g transform="translate(870, 1040)" color="#F4EFE6">
+    <text x="0" y="-28" font-family="Inter, -apple-system, Segoe UI, sans-serif"
+          font-size="11" fill="#9A9790" letter-spacing="2.5"
+          font-weight="500">08 · REVERSA — MONOGRAMA</text>
+    <use href="#monograma" x="0" y="0" width="180" height="180"/>
+  </g>
+
+  <!-- ============================================================
+       9. FAVICON / TAMANHOS PEQUENOS — teste de integridade
+       em 64px, 32px e 16px.
+       ============================================================ -->
+  <g transform="translate(220, 1320)" color="#F4EFE6">
+    <text x="0" y="-28" font-family="Inter, -apple-system, Segoe UI, sans-serif"
+          font-size="11" fill="#9A9790" letter-spacing="2.5"
+          font-weight="500">09 · FAVICON — TESTE EM TAMANHOS PEQUENOS</text>
+    <!-- Aplicação em tamanhos reais renderizáveis -->
+    <g transform="translate(0, 0)">
+      <use href="#monograma" width="64" height="64"/>
+      <text x="32" y="90" font-family="Inter, sans-serif" font-size="10" fill="#9A9790" text-anchor="middle">64 px</text>
+    </g>
+    <g transform="translate(110, 16)">
+      <use href="#monograma" width="48" height="48"/>
+      <text x="24" y="70" font-family="Inter, sans-serif" font-size="10" fill="#9A9790" text-anchor="middle">48 px</text>
+    </g>
+    <g transform="translate(200, 32)">
+      <use href="#monograma" width="32" height="32"/>
+      <text x="16" y="54" font-family="Inter, sans-serif" font-size="10" fill="#9A9790" text-anchor="middle">32 px</text>
+    </g>
+    <g transform="translate(260, 48)">
+      <!-- 16px: versão simplificada — apenas o M sem círculo para evitar aliasing -->
+      <g color="#F4EFE6">
+        <rect x="260" y="48" width="16" height="16" fill="none"/>
+        <!-- M simplificado 16x16: usar path direto por clareza -->
+        <g transform="translate(260, 48) scale(0.16)" fill="currentColor">
+          <rect x="22.5" y="26" width="7.5" height="48"/>
+          <rect x="70" y="26" width="7.5" height="48"/>
+          <polygon points="30,26 33.2,26 51.6,61 48.4,61"/>
+          <polygon points="66.8,26 70,26 51.6,61 48.4,61"/>
+        </g>
+      </g>
+      <text x="8" y="38" transform="translate(260, 48)" font-family="Inter, sans-serif" font-size="10" fill="#9A9790" text-anchor="middle">16 px</text>
+    </g>
+  </g>
+
+  <!-- ============================================================
+       10. ASSINATURA INSTITUCIONAL LEGAL — forma extensa
+       "MAGNO GESTÃO PATRIMONIAL" para uso em contratos, letterhead,
+       rodapé legal, razão social.
+       ============================================================ -->
+  <g transform="translate(220, 1520)" color="#F4EFE6">
+    <text x="0" y="-28" font-family="Inter, -apple-system, Segoe UI, sans-serif"
+          font-size="11" fill="#9A9790" letter-spacing="2.5"
+          font-weight="500">10 · ASSINATURA INSTITUCIONAL EXTENSA</text>
+    <!-- Wordmark -->
+    <use href="#wordmark" x="0" y="0" width="260" height="49"/>
+    <!-- Modificador institucional, em Inter tracking alto -->
+    <text x="5" y="74" font-family="Inter, -apple-system, Segoe UI, sans-serif"
+          font-size="12" fill="#F4EFE6" letter-spacing="5"
+          font-weight="400">GESTÃO PATRIMONIAL</text>
+  </g>
+
+  <!-- ============================================================
+       NOTAS DE FINALIZAÇÃO (visíveis no canto inferior direito)
+       ============================================================ -->
+  <g transform="translate(880, 1520)">
+    <text x="0" y="-28" font-family="Inter, sans-serif" font-size="11"
+          fill="#9A9790" letter-spacing="2.5" font-weight="500">NOTAS DE PRODUÇÃO</text>
+    <text x="0" y="0" font-family="Inter, sans-serif" font-size="11" fill="#F4EFE6" opacity="0.85">
+      <tspan x="0" dy="0">• Wordmark: Fraunces (eixo óptico ajustado), peso 500, tracking +120</tspan>
+      <tspan x="0" dy="18">• Monograma: paths vetoriais (independente de fonte)</tspan>
+      <tspan x="0" dy="18">• Cor primária: antracite #0E0E10 sobre pergaminho #F4EFE6</tspan>
+      <tspan x="0" dy="18">• Acento: bordô profundo #5A1F25 (ver color-system.md)</tspan>
+      <tspan x="0" dy="18">• Production export: outline text antes de distribuir</tspan>
+      <tspan x="0" dy="18">• Tamanho mínimo do monograma: 16 px (M simplificado sem círculo)</tspan>
+    </text>
+  </g>
+
+</svg>
