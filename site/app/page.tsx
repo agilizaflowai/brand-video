@@ -67,8 +67,8 @@ export default function HomePage() {
             >
               Agendar primeira conversa
             </Button>
-            <Link href="/estrategia" className="link-editorial link-editorial--inverse text-[0.9375rem]">
-              Entender o posicionamento
+            <Link href="/identidade" className="link-editorial link-editorial--inverse text-[0.9375rem]">
+              Explorar a identidade
               <ArrowUpRight size={14} strokeWidth={1.25} />
             </Link>
           </div>
@@ -205,10 +205,10 @@ export default function HomePage() {
                 em média, entre 1&nbsp;% e 3&nbsp;% do notional — invisível à cotação.
               </p>
               <Link
-                href="/estrategia"
+                href="/proposta"
                 className="link-editorial link-editorial--inverse text-[0.9375rem] mt-2 self-start"
               >
-                Ler carta trimestral
+                Ver proposta comercial
                 <ArrowUpRight size={14} strokeWidth={1.25} />
               </Link>
             </div>
@@ -246,8 +246,8 @@ export default function HomePage() {
           consequência da estrutura — não o ponto de partida.
         </Body>
         <div className="mt-10">
-          <Link href="/estrategia" className="link-editorial text-[0.9375rem]">
-            Ler manifesto completo
+          <Link href="/identidade" className="link-editorial text-[0.9375rem]">
+            Explorar a identidade visual
             <ArrowRight size={14} strokeWidth={1.25} />
           </Link>
         </div>
@@ -259,7 +259,7 @@ export default function HomePage() {
           <div className="flex flex-col gap-4 mb-8 md:mb-12">
             <Eyebrow>Explorar a marca</Eyebrow>
             <Display as="h2" size="m" className="max-w-[26ch]">
-              Seis seções. Uma marca construída por sistema.
+              Cinco seções. Uma marca construída por sistema.
             </Display>
           </div>
 
@@ -352,10 +352,9 @@ const stats = [
 ]
 
 const navCards = [
-  { num: '→ 01', href: '/estrategia', label: 'Estratégia', desc: 'Posicionamento, personas e voz editorial.' },
-  { num: '→ 02', href: '/identidade', label: 'Identidade', desc: 'Logo, paleta, tipografia e sistema visual.' },
-  { num: '→ 03', href: '/ui-kit', label: 'UI Kit', desc: 'Componentes React + Tailwind.' },
-  { num: '→ 04', href: '/social-kit', label: 'Social Kit', desc: '4 pilares, 20 posts, templates 1:1 / 4:5 / 9:16.' },
-  { num: '→ 05', href: '/proposta', label: 'Proposta comercial', desc: 'Documento institucional em 10 páginas A4.' },
-  { num: '→ 06', href: '/papel-timbrado', label: 'Papel timbrado', desc: 'Letterhead A4 e assinatura de e-mail.' },
+  { num: '→ 01', href: '/identidade', label: 'Identidade', desc: 'Logo, paleta, tipografia e sistema visual.' },
+  { num: '→ 02', href: '/ui-kit', label: 'UI Kit', desc: 'Componentes React + Tailwind.' },
+  { num: '→ 03', href: '/social-kit', label: 'Social Kit', desc: '4 pilares, 20 posts, templates 1:1 / 4:5 / 9:16.' },
+  { num: '→ 04', href: '/proposta', label: 'Proposta comercial', desc: 'Documento institucional em 10 páginas A4.' },
+  { num: '→ 05', href: '/papel-timbrado', label: 'Papel timbrado', desc: 'Letterhead A4 e assinatura de e-mail.' },
 ]

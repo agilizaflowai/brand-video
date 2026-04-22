@@ -8,7 +8,6 @@ interface FooterLink {
 }
 
 const navLinks: FooterLink[] = [
-  { href: '/estrategia', label: 'Estratégia' },
   { href: '/identidade', label: 'Identidade' },
   { href: '/ui-kit', label: 'UI Kit' },
   { href: '/social-kit', label: 'Social Kit' },
